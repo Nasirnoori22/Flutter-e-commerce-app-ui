@@ -1,15 +1,9 @@
+import 'package:e_commerce_app/pages/singUp/components/signUp_form.dart';
 import 'package:flutter/material.dart';
 
-import 'components/login_form.dart';
+class SingUpScreen extends StatelessWidget {
+  const SingUpScreen({Key? key}) : super(key: key);
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -30,20 +24,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Text(
-                'Welcome!',
+                'Sign Up',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
               ),
               Text(
-                'please login or sign up to continue our app',
+                'Create an new account',
                 style: TextStyle(fontSize: 18, color: Colors.black54),
               ),
               SizedBox(
                 height: 50,
               ),
-              LoginForm()
+              SignUpForm()
             ],
           ),
         ),

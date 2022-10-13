@@ -1,3 +1,7 @@
+import 'package:e_commerce_app/pages/login/login_screen.dart';
+import 'package:e_commerce_app/pages/singUp/components/start_shopping.dart';
+import 'package:e_commerce_app/pages/singUp/signUp_screen.dart';
+import 'package:e_commerce_app/start_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'onboarding/intro_home.dart';
@@ -13,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const OnboardingHome(),
+      home: const StartScreen(),
     );
   }
 }

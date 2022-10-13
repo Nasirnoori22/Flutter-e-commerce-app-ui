@@ -1,9 +1,21 @@
+import 'package:e_commerce_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  GlobalKey<FormState> _form = GlobalKey<FormState>();
+
+  void _validate() {
+    _form.currentState?.validate();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,19 +63,22 @@ class LoginForm extends StatelessWidget {
         Container(
           height: MediaQuery.of(context).size.height * 0.06,
           width: MediaQuery.of(context).size.width * 0.9,
-          child: Hero(
-            tag: "login_btn",
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30), // <-- Radius
-                ),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30), // <-- Radius
               ),
-              onPressed: () {},
-              child: Text(
-                "Login".toUpperCase(),
-              ),
+            ),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+                (Route<dynamic> route) => false,
+              );
+            },
+            child: Text(
+              "Login".toUpperCase(),
             ),
           ),
         ),
@@ -77,33 +92,29 @@ class LoginForm extends StatelessWidget {
         Container(
           height: MediaQuery.of(context).size.height * 0.06,
           width: MediaQuery.of(context).size.width * 0.9,
-          child: Hero(
-            tag: "login_btn",
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 45, 96, 184),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30), // <-- Radius
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromARGB(255, 45, 96, 184),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30), // <-- Radius
+              ),
+            ),
+            onPressed: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 20),
+                  child: Icon(Icons.facebook),
                 ),
-              ),
-              onPressed: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 20),
-                    child: Icon(Icons.facebook),
+                Container(
+                  margin: EdgeInsets.only(right: 20),
+                  child: Text(
+                    'Continue With Facebook',
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: Text(
-                      'Continue With Facebook',
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),
