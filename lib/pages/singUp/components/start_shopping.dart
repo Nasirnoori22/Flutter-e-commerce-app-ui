@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../home_page.dart';
+import '../../main_screen.dart';
 
 class StartShopping extends StatelessWidget {
   const StartShopping({Key? key}) : super(key: key);
@@ -60,7 +61,7 @@ class StartShopping extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
+                      MaterialPageRoute(builder: (context) => MainScreen()),
                       (Route<dynamic> route) => false,
                     );
                   },

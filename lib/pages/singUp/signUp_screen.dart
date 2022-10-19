@@ -20,7 +20,7 @@ class SingUpScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  child: Image.asset('assets/images/logo/my_logo.jpeg'),
+                  child: Image.asset('assets/images/logo/my_logo.png'),
                 ),
               ),
               Text(

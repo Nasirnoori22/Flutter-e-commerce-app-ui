@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../main_screen.dart';
+
 class LoginForm extends StatefulWidget {
   const LoginForm({
     Key? key,
@@ -73,7 +75,7 @@ class _LoginFormState extends State<LoginForm> {
             onPressed: () {
               Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => MainScreen()),
                 (Route<dynamic> route) => false,
               );
             },
