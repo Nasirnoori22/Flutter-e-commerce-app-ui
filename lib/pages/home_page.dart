@@ -2,12 +2,16 @@ import 'package:animations/animations.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:e_commerce_app/pages/components/search_filter.dart';
+import 'package:e_commerce_app/pages/main_screen.dart';
+import 'package:e_commerce_app/pages/profile/personnel_profile.dart';
 import 'package:e_commerce_app/pages/profile/profile_main.dart';
 import 'package:e_commerce_app/widgets/dress_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../model/dresse_model.dart';
+import 'dress_details.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -113,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ProfileMain()),
+                              builder: (context) => PersonnelProfile()),
                           (Route<dynamic> route) => true,
                         );
                       },
@@ -175,16 +179,28 @@ class _HomePageState extends State<HomePage> {
                                 BorderRadius.all(Radius.circular(30))),
                         child: IconButton(
                           onPressed: () {
-                            showDialog(
+                            showMaterialModalBottomSheet(
+                              duration: Duration(milliseconds: 500),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20)),
+                              ),
                               context: context,
-                              builder: (context) {
-                                return Dialog(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(30)),
-                                    elevation: 16,
-                                    child: SearchFilter());
-                              },
+                              builder: (context) => SingleChildScrollView(
+                                controller: ModalScrollController.of(context),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(50),
+                                        topRight: Radius.circular(50)),
+                                    color: Colors.white,
+                                  ),
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  child: SearchFilter(),
+                                ),
+                              ),
                             );
                           },
                           icon: Image.asset(
@@ -210,10 +226,8 @@ class _HomePageState extends State<HomePage> {
               (BuildContext context, int index) {
                 return Padding(
                   padding:
-                      const EdgeInsets.only(left: 10.0, right: 10, top: 30),
+                      const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                   child: OpenContainer(
-                      closedColor: Color(0xff201d2b),
-                      openColor: Color(0xff201d2b),
                       transitionDuration: const Duration(milliseconds: 500),
                       transitionType: ContainerTransitionType.fadeThrough,
                       closedBuilder: ((context, action) {
@@ -294,80 +308,20 @@ class _HomePageState extends State<HomePage> {
                         );
                       }),
                       openBuilder: (context, action) {
-                        return DressDetails();
+                        return Stack(
+                          children: <Widget>[
+                            Image.asset(
+                              display_list[index].image!,
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              fit: BoxFit.cover,
+                            ),
+                            Scaffold(
+                              appBar: AppBar(),
+                            )
+                          ],
+                        );
                       }),
-                  // child: Container(
-                  //   alignment: Alignment.center,
-                  //   color: Colors.white,
-                  //   child: Column(
-                  //     children: [
-                  //       Padding(
-                  //         padding: const EdgeInsets.all(8.0),
-                  //         child: Stack(
-                  //           children: [
-                  //             Container(
-                  //               decoration: BoxDecoration(),
-                  //               child: ClipRRect(
-                  //                 borderRadius: BorderRadius.circular(20),
-                  //                 child: Image.asset(
-                  //                   dress[index].image!,
-                  //                   fit: BoxFit.cover,
-                  //                   height: MediaQuery.of(context).size.height *
-                  //                           0.3 -
-                  //                       50,
-                  //                   width: MediaQuery.of(context).size.width,
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //             Positioned(
-                  //               top: 15,
-                  //               right: 15,
-                  //               child: Container(
-                  //                 height: 35,
-                  //                 width: 35,
-                  //                 decoration: BoxDecoration(
-                  //                     color: Colors.black,
-                  //                     borderRadius: BorderRadius.all(
-                  //                         Radius.circular(30))),
-                  //                 child: IconButton(
-                  //                     onPressed: () {},
-                  //                     icon: Icon(
-                  //                       Icons.favorite_border,
-                  //                       color: Colors.white,
-                  //                       size: 20,
-                  //                     )),
-                  //               ),
-                  //             )
-                  //           ],
-                  //         ),
-                  //       ),
-                  //       SizedBox(
-                  //         height: 5,
-                  //       ),
-                  //       Text(
-                  //         'Roller Rabbit',
-                  //         style: TextStyle(
-                  //             fontSize: 20, fontWeight: FontWeight.bold),
-                  //       ),
-                  //       SizedBox(
-                  //         height: 2,
-                  //       ),
-                  //       Text(
-                  //         'Vodo Odello Dress',
-                  //         style: TextStyle(
-                  //             fontSize: 16, color: Colors.grey.shade700),
-                  //       ),
-                  //       SizedBox(
-                  //         height: 2,
-                  //       ),
-                  //       Text(
-                  //         '\$190.00',
-                  //         style: TextStyle(
-                  //             fontSize: 20, fontWeight: FontWeight.bold),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                 );
               },
               childCount: display_list.length,

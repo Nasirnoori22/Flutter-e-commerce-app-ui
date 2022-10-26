@@ -3,6 +3,9 @@ import 'package:e_commerce_app/pages/home_page.dart';
 import 'package:e_commerce_app/pages/profile/profile_main.dart';
 import 'package:flutter/material.dart';
 
+import 'cart/card_main.dart';
+import 'notifications/notification_main_screen.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -24,8 +27,12 @@ class _MainScreenState extends State<MainScreen> {
           Container(
             child: HomePage(),
           ),
-          Container(color: Colors.red),
-          Container(color: Colors.greenAccent.shade700),
+          Container(
+            child: CartMainScreen(),
+          ),
+          Container(
+            child: NotificationsMainScreen(),
+          ),
           Container(
             child: ProfileMain(),
           ),
@@ -50,14 +57,14 @@ class _MainScreenState extends State<MainScreen> {
             activeColor: Colors.black,
           ),
           BottomBarItem(
-            icon: Icon(Icons.favorite),
-            title: Text('Favorites'),
-            activeColor: Colors.red,
+            icon: Icon(Icons.add_shopping_cart),
+            title: Text('Cart'),
+            activeColor: Colors.black,
           ),
           BottomBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Account'),
-            activeColor: Colors.greenAccent.shade700,
+            icon: Icon(Icons.notifications),
+            title: Text('Notifications'),
+            activeColor: Colors.black,
           ),
           BottomBarItem(
             icon: Icon(Icons.person),

@@ -352,7 +352,7 @@ class _SearchFilterState extends State<SearchFilter> {
                         itemPadding: EdgeInsets.symmetric(horizontal: 0.0),
                         itemBuilder: (context, _) => Icon(
                           Icons.star,
-                          color: Colors.black,
+                          color: Color.fromARGB(255, 248, 191, 19),
                         ),
                         onRatingUpdate: (rating) {
                           print(rating);
@@ -373,7 +373,7 @@ class _SearchFilterState extends State<SearchFilter> {
                         itemPadding: EdgeInsets.symmetric(horizontal: 0.0),
                         itemBuilder: (context, _) => Icon(
                           Icons.star,
-                          color: Colors.black,
+                          color: Color.fromARGB(255, 248, 191, 19),
                         ),
                         onRatingUpdate: (rating) {
                           print(rating);
@@ -394,7 +394,7 @@ class _SearchFilterState extends State<SearchFilter> {
                         itemPadding: EdgeInsets.symmetric(horizontal: 0.0),
                         itemBuilder: (context, _) => Icon(
                           Icons.star,
-                          color: Colors.black,
+                          color: Color.fromARGB(255, 248, 191, 19),
                         ),
                         onRatingUpdate: (rating) {
                           print(rating);
